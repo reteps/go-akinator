@@ -53,7 +53,6 @@ func (r *Response) answer(a int) error {
 		return err
 	}
 
-	r.client.responses <- newResponse
-
+	r.client.Responses = append(r.client.Responses, newResponse)
 	return nil
 }
