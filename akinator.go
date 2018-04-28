@@ -23,7 +23,7 @@ type Client struct {
 		session   string
 		signature string
 	}
-	previousProgress float64
+	PreviousProgress float64
 }
 
 // NewClient returns a new *Client to use with the Akinator.
