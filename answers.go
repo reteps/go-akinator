@@ -23,7 +23,7 @@ func (r *Response) AnswerDontKnow() error {
 
 // AnswerProbably responds to a question with the answer "Probably".
 func (r *Response) AnswerProbably() error {
-	return r.answer(3)
+	return r.Answer(3)
 }
 
 // AnswerProbablyNot responds to a question with the answer "Probably Not".
