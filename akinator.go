@@ -17,7 +17,7 @@ const (
 // Client is used for each session with the Akinator.
 type Client struct {
 	HTTPClient     *http.Client
-	responses      chan *Response
+	Responses      []*Response
 	identification struct {
 		step      int
 		session   string
@@ -37,7 +37,7 @@ func NewClient() (*Client, error) {
 	}
 
 	c.HTTPClient = httpClient
-	c.responses = make(chan *Response, 1)
+	c.responses = []*Response{}
 
 	resp, err := c.HTTPClient.Head("http://en.akinator.com/personnages/")
 	if err != nil {
@@ -65,12 +65,7 @@ func NewClient() (*Client, error) {
 		return &c, err
 	}
 
-	c.responses <- r
+	c.Responses = append(c.Responses, r)
 
 	return &c, nil
-}
-
-// Next is used to recieve the next response in the channel.
-func (c *Client) Next() <-chan *Response {
-	return c.responses
 }
