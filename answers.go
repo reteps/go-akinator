@@ -8,17 +8,17 @@ import (
 
 // AnswerYes responds to a question with the answer "Yes".
 func (r *Response) AnswerYes() error {
-	return r.answer(0)
+	return r.Answer(0)
 }
 
 // AnswerNo responds to a question with the answer "No".
 func (r *Response) AnswerNo() error {
-	return r.answer(1)
+	return r.Answer(1)
 }
 
 // AnswerDontKnow responds to a question with the answer "Don't Know".
 func (r *Response) AnswerDontKnow() error {
-	return r.answer(2)
+	return r.Answer(2)
 }
 
 // AnswerProbably responds to a question with the answer "Probably".
@@ -28,10 +28,10 @@ func (r *Response) AnswerProbably() error {
 
 // AnswerProbablyNot responds to a question with the answer "Probably Not".
 func (r *Response) AnswerProbablyNot() error {
-	return r.answer(4)
+	return r.Answer(4)
 }
 
-func (r *Response) answer(a int) error {
+func (r *Response) Answer(a int) error {
 	resp, err := r.client.HTTPClient.Get("http://api-us4.akinator.com/ws/answer?" + url.Values{
 		"session":   {r.client.identification.session},
 		"signature": {r.client.identification.signature},
