@@ -37,7 +37,7 @@ func NewClient() (*Client, error) {
 	}
 
 	c.HTTPClient = httpClient
-	c.responses = []*Response{}
+	c.Responses = []*Response{}
 
 	resp, err := c.HTTPClient.Head("http://en.akinator.com/personnages/")
 	if err != nil {
