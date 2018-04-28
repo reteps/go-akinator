@@ -95,7 +95,7 @@ func (c *Client) getResponse(content []byte) (*Response, error) {
 	}
 
 	r.Akitude = r.getAkitude()
-	c.previousProgress = r.Progression
+	c.PreviousProgress = r.Progression
 
 	if r.isAbleToFind() {
 		r.stepOfLastProp = c.identification.step
@@ -178,7 +178,7 @@ func (r *Response) isAbleToFind() bool {
 func (r *Response) getAkitude() string {
 	step := r.client.identification.step
 	progress := r.Progression
-	oldProgress := r.client.previousProgress
+	oldProgress := r.client.PreviousProgress
 	f := float64(step) * 4
 	var p float64
 	if step <= 10 {
